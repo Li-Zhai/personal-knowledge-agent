@@ -20,6 +20,9 @@ htmlcov/
 .env.*
 !.env.example
 
+# Generated inventory data
+/data/
+
 # macOS
 .DS_Store
 
