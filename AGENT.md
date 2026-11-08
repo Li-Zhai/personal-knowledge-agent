@@ -161,6 +161,7 @@ Dependency modifications require explicit edit authorization.
 8. Handle relevant edge cases and errors explicitly.
 9. Do not introduce unnecessary global state.
 10. Preserve existing behavior unless a change is explicitly requested.
+11. Use absolute imports for project modules; avoid relative imports.
 
 ### 4.2 Architecture
 
