@@ -317,6 +317,16 @@ For substantial changes, communicate the proposed approach before implementation
 - Avoid unnecessary approval requests for permitted read-only operations.
 - Do not silently expand the scope of a task.
 
+### 7.5 Project Plan Reference
+
+For tasks involving project planning, architecture, milestone scope, or future implementation direction, read `docs/PROJECT_PLAN.md` when it exists before proposing changes.
+
+Treat `docs/PROJECT_PLAN.md` as the authoritative reference for the intended roadmap, current milestone, and documented project decisions. Verify claims about implemented functionality against the repository rather than assuming the plan is up to date.
+
+If the plan is missing, outdated, or inconsistent with the code, report the discrepancy explicitly. Do not silently rewrite the roadmap or change implementation scope to resolve it.
+
+Do not create or modify `docs/PROJECT_PLAN.md` automatically. Update it only when the current user prompt explicitly requests that change **and** begins with the valid `[EDIT]` marker. The per-prompt authorization policy in Section 2 continues to apply.
+
 ---
 
 ## 8. Version Control
