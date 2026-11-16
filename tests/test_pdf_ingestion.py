@@ -127,12 +127,12 @@ def test_pipeline_uses_discovered_records_preserves_order_and_isolates_failures(
 ) -> None:
     broken_pdf = tmp_path / "01-broken.pdf"
     valid_pdf = tmp_path / "02-valid.pdf"
-    ignored_text = tmp_path / "03-notes.txt"
+    notes = tmp_path / "03-notes.txt"
     broken_pdf.write_bytes(b"not a PDF")
     _write_pdf(
         valid_pdf, ["A sufficiently long valid PDF page follows a broken document."]
     )
-    ignored_text.write_text("not in scope", encoding="utf-8")
+    notes.write_text("not in scope", encoding="utf-8")
 
     inventory = scan_directory(tmp_path)
     results = ingest_discovered_files(tmp_path, inventory.files)
@@ -142,5 +142,6 @@ def test_pipeline_uses_discovered_records_preserves_order_and_isolates_failures(
         "02-valid.pdf",
         "03-notes.txt",
     ]
-    assert [result.status for result in results] == ["failed", "success", "unsupported"]
+    assert [result.status for result in results] == ["failed", "success", "success"]
     assert results[1].sections[0].page_number == 1
+    assert results[2].sections[0].text == "not in scope"
